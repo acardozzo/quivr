@@ -3,7 +3,6 @@ version: "3.8"
 services:
   frontend:
     image: quivr-frontend-prebuilt
-    pull_policy: never
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -24,7 +23,6 @@ services:
 
   backend-core:
     image: stangirard/quivr-backend-prebuilt:latest
-    pull_policy: if_not_present
     env_file:
       - .env
     build:
@@ -58,7 +56,6 @@ services:
       - 6379:6379
 
   worker:
-    pull_policy: if_not_present
     image: stangirard/quivr-backend-prebuilt:latest
     env_file:
       - .env
@@ -75,7 +72,6 @@ services:
 
   beat:
     image: stangirard/quivr-backend-prebuilt:latest
-    pull_policy: if_not_present
     env_file:
       - .env
     build:
@@ -91,7 +87,6 @@ services:
 
   flower:
     image: stangirard/quivr-backend-prebuilt:latest
-    pull_policy: if_not_present
     env_file:
       - .env
     build:
